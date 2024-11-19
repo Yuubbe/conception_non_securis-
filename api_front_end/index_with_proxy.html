@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de sécurité - Proxy API</title>
+    <script>
+        // Requête vers le serveur proxy pour masquer la clé API
+        function fetchWeather() {
+            const url = '/proxy.php';  // Le serveur proxy interroge l'API externe
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Données de l\'API via proxy:', data);
+                    document.getElementById('weather').innerText = `Météo: ${data.weather}`;
+                })
+                .catch(error => console.log('Erreur:', error));
+        }
+
+        // Appel de la fonction pour récupérer la météo via le proxy
+        window.onload = function() {
+            fetchWeather();
+        }
+    </script>
+</head>
+<body>
+    <h1>Test de sécurité - Proxy API</h1>
+    <div id="weather">Chargement de la météo...</div>
+</body>
+</html>
