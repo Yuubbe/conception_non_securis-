@@ -2,20 +2,22 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Actualités - Version Sécurisée</title>
+    <title>Actualités - Code Vulnérable</title>
 </head>
 <body>
-    <h1>Actualités (Version Sécurisée)</h1>
+    <h1>Actualités (Version Vulnérable)</h1>
     <div id="news"></div>
 
     <script>
-        const proxyUrl = '/proxy2.php'; // URL du proxy backend
+        // Clé API exposée directement dans le code client
+        const apiKey = '4fc33b78c89e420da745c3e532aaa356';
+        const apiUrl = 'https://newsapi.org/v2/top-headlines';
 
         // Fonction pour récupérer les actualités
         async function getNews() {
             try {
-                // Appeler le proxy pour obtenir les actualités
-                const response = await fetch(proxyUrl);
+                // Appeler directement l'API avec la clé exposée
+                const response = await fetch(`${apiUrl}?country=us&category=general&apiKey=${apiKey}`);
                 if (!response.ok) {
                     throw new Error('Erreur lors de la récupération des données');
                 }
